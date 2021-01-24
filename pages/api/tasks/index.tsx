@@ -1,5 +1,5 @@
-import dbConnect from "../../util/dbconnect";
-import Task from "../../models/Task";
+import dbConnect from "../../../util/dbconnect";
+import Task from "../../../models/Task";
 
 dbConnect();
 
@@ -23,6 +23,7 @@ export default async function (req, res) {
       try {
         const task = await new Task(req.body);
         res.status(201).json({ success: true, data: task });
+        task.save();
       } catch (error) {
         res
           .status(400)
