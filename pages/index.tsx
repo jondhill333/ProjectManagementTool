@@ -1,56 +1,47 @@
 import Head from "next/head";
-import Title from "../components/title";
-import { connectToDatabase } from "../util/mongodb";
+import React from "react";
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
+import TaskViewSection from "../components/TaskViewSection/TaskViewSection";
+import styles from "./index.module.scss";
 
-export default function Home({ movies }) {
-  const { year, released, cast } = movies[0];
+export const TaskContext = React.createContext([]);
 
+export default function Home({ tasks }) {
+  const { container, taskBox } = styles;
+  const newTasks = tasks.filter((task) => task.status === "New");
+  const inProgressTasks = tasks.filter((task) => task.status === "In Progress");
+  const completeTasks = tasks.filter((task) => task.status === "Complete");
   return (
     <>
-      <Title released={released} year={year} cast={cast} />
       <Head>
         <title>Project Management Tool</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-        {/* {isConnected ? (
-          <h2 className="subtitle">You are connected to MongoDB</h2>
-        ) : (
-          <h2 className="subtitle">
-            You are NOT connected to MongoDB. Check the <code>README.md</code>{" "}
-            for instructions.
-          </h2>
-        )} */}
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-      </main>
-
-      <footer></footer>
+      <TaskContext.Provider value={tasks}>
+        <main>
+          <div className={container}>
+            <section className={`${taskBox}`}>New</section>
+            <section className={`${taskBox}`}>In Porgress</section>
+            <section className={`${taskBox}`}>Completed</section>
+          </div>
+          {/* <TaskViewSection />
+          <TaskViewSection />
+          <TaskViewSection /> */}
+        </main>
+        <footer></footer>
+      </TaskContext.Provider>
     </>
   );
 }
 
-export async function getServerSideProps() {
-  const { db } = await connectToDatabase();
-  const movies = await db
-    .collection("movies")
-    .find({})
-    .sort({ metacritic: -1 })
-    .limit(20)
-    .toArray();
+// export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async (context) => {
+  const res = await fetch("http://localhost:3000/api/tasks");
+  const { data } = await res.json();
+
   return {
     props: {
-      movies: JSON.parse(JSON.stringify(movies)),
+      tasks: data,
     },
   };
-}
-// const { client } = await connectToDatabase();
-
-// const isConnected = await client.isConnected();
-
-// return {
-//   props: { isConnected },
-// };
+};
