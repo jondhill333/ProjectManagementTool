@@ -5,7 +5,6 @@ dbConnect();
 
 export default async function (req, res) {
   const { method } = req;
-  console.log(method);
   switch (method) {
     case "GET":
       try {

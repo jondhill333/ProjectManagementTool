@@ -44,7 +44,7 @@ export default async function (req, res) {
         }
         res.status(200).json({ success: true, data: {} });
       } catch (error) {
-        res.status(400).json({ success: false + "try noty worked" });
+        res.status(400).json({ success: false + "delete not worked" });
       }
       break;
     default:
