@@ -1,0 +1,17 @@
+@import "./variables";
+
+
+@mixin grid($gapSize) {
+    display: grid;
+    gap: $gapSize;
+  }
+  
+  @mixin flex($direction) {
+    display: flex;
+    flex-direction: $direction;
+  }
+  
+  @mixin centered {
+    justify-content: center;
+    align-items: center;
+  }
