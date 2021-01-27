@@ -2,6 +2,7 @@ import Head from "next/head";
 import React, { useState } from "react";
 // import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import styles from "./new.module.scss";
+import { useRouter } from "next/router";
 
 export default function NewTask() {
   const { container, taskForm } = styles;
@@ -10,6 +11,7 @@ export default function NewTask() {
     description: "",
     estimatedDueDate: "",
   });
+  const router = useRouter();
 
   function handleChange(e) {
     setForm({
@@ -33,6 +35,7 @@ export default function NewTask() {
         },
         body: JSON.stringify(form),
       });
+      router.push("/home");
     } catch (error) {
       console.log(error);
     }
