@@ -1,9 +1,10 @@
 import dbConnect from "../../../util/dbconnect";
 import Task from "../../../models/Task";
+import { NextApiRequest, NextApiResponse } from "next";
 
 dbConnect();
 
-export default async function (req, res) {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   const {
     query: { id },
     method,
@@ -22,16 +23,29 @@ export default async function (req, res) {
       }
       break;
     case "PUT":
+      // try {
+      //   // TODO fix issue and update args
+      //   const task = await Task.findByIdAndUpdate(id, req.body, {
+      //     new: true,
+      //     runValidators: true,
+      //   });
+      //   if (!task) {
+      //     return res.status(400).json({ success: false });
+      //   }
+      //   res.status(200).json({ success: true, data: task });
+      // } catch (error) {
+      //   res.status(400).json({ success: false });
+      // }
       try {
         // TODO fix issue and update args
-        const task = await Task.findByIdAndUpdate(id, req.body, {
-          new: true,
-          runValidators: true,
-        });
+        let task = await Task.findById(id);
         if (!task) {
           return res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: task });
+        const informationToUpdate = req.body;
+        task = informationToUpdate;
+        let updatedTask = task.save();
+        res.status(200).json({ success: true, data: updatedTask });
       } catch (error) {
         res.status(400).json({ success: false });
       }

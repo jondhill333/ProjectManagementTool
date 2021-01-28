@@ -54,7 +54,6 @@ export default function Home({ tasks }) {
   );
 }
 
-// export async function getStaticProps() {
 export const getStaticProps: GetStaticProps = async (context) => {
   const res = await fetch("http://localhost:3000/api/tasks");
   const { data } = await res.json();
