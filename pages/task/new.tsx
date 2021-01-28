@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React, { useState } from "react";
-// import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import styles from "./new.module.scss";
 import { useRouter } from "next/router";
 
