@@ -1,9 +1,10 @@
 import dbConnect from "../../../util/dbconnect";
 import Task from "../../../models/Task";
+import { NextApiRequest, NextApiResponse } from "next";
 
 dbConnect();
 
-export default async function (req, res) {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
   switch (method) {
     case "GET":
