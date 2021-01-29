@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 export default function EditTaskModal({ task }) {
   const { radioButtons } = styles;
-  // console.log(task);
   let correctlyFormattedDate = [];
   task.estimatedDueDate
     .substring(0, 10)
