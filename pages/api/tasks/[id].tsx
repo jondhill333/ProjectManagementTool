@@ -23,29 +23,17 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       }
       break;
     case "PUT":
-      // try {
-      //   // TODO fix issue and update args
-      //   const task = await Task.findByIdAndUpdate(id, req.body, {
-      //     new: true,
-      //     runValidators: true,
-      //   });
-      //   if (!task) {
-      //     return res.status(400).json({ success: false });
-      //   }
-      //   res.status(200).json({ success: true, data: task });
-      // } catch (error) {
-      //   res.status(400).json({ success: false });
-      // }
       try {
-        // TODO fix issue and update args
-        let task = await Task.findById(id);
+        // below function works despite error message
+        const task = await Task.findByIdAndUpdate(id, req.body, {
+          new: true,
+          runValidators: true,
+          useFindAndModify: false,
+        });
         if (!task) {
           return res.status(400).json({ success: false });
         }
-        const informationToUpdate = req.body;
-        task = informationToUpdate;
-        let updatedTask = task.save();
-        res.status(200).json({ success: true, data: updatedTask });
+        res.status(200).json({ success: true, data: task });
       } catch (error) {
         res.status(400).json({ success: false });
       }
