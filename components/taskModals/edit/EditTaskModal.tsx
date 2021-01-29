@@ -3,8 +3,9 @@ import styles from "./EditTaskModal.module.scss";
 import { useRouter } from "next/router";
 
 export default function EditTaskModal({ task }) {
+  const { radioButtons } = styles;
+  // console.log(task);
   let correctlyFormattedDate = [];
-
   task.estimatedDueDate
     .substring(0, 10)
     .split("-")
@@ -23,6 +24,7 @@ export default function EditTaskModal({ task }) {
     title: task.title,
     description: task.description,
     estimatedDueDate: formattedEstimatedDueDate,
+    status: task.status,
   });
   const router = useRouter();
 
@@ -87,6 +89,32 @@ export default function EditTaskModal({ task }) {
             value={form.estimatedDueDate}
             onChange={handleChange}
           />
+          <div className={radioButtons}>
+            <input
+              type="radio"
+              id="new"
+              name="status"
+              value="New"
+              onChange={handleChange}
+            />
+            <label htmlFor="new">New</label>
+            <input
+              type="radio"
+              id="In Progress"
+              name="status"
+              value="In Progress"
+              onChange={handleChange}
+            />
+            <label htmlFor="in-progress">In Progress</label>
+            <input
+              type="radio"
+              id="complete"
+              name="status"
+              value="Complete"
+              onChange={handleChange}
+            />
+            <label htmlFor="complete">Complete</label>
+          </div>
           <input type="submit" value="Submit"></input>
         </form>
       </main>
