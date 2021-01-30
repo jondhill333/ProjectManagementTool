@@ -1,0 +1,15 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.container {
+  @include grid(50px);
+  @include centered();
+  grid-template-columns: repeat(3, 350px);
+  grid-template-rows: 600px;
+}
+
+.taskBox {
+  width: 100%;
+  height: 100%;
+  border: solid 1px grey;
+}

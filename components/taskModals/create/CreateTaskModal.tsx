@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./CreateTaskModal.module.scss";
 import { useRouter } from "next/router";
 
-export default function TaskModal() {
+export default function CreateTaskModal() {
   const { container, taskForm } = styles;
   const [form, setForm] = useState({
     title: "",
