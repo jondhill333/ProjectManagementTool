@@ -4,7 +4,8 @@ import React, { useContext } from "react";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import { getAllIds } from "../../util/tasks";
 import { getTaskData } from "../../util/tasks";
-import EditTaskModal from "../../components/taskModals/edit/EditTaskModal";
+// import EditTaskModal from "../../components/taskModals/edit/EditTaskModal";
+import AllActionModal from "../../components/allActionModal/AllActionModal";
 // import styles from "./new.module.scss";
 // import { useRouter } from "next/router";
 // import TaskModal from "../components/taskModal/TaskModal";
@@ -14,7 +15,7 @@ export default function EditTask({ allTaskData }) {
   return (
     <>
       <div> Update page</div>
-      <EditTaskModal task={task}></EditTaskModal>
+      <AllActionModal task={task}></AllActionModal>
     </>
   );
 }

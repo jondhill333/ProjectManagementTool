@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import styles from "./new.module.scss";
-import CreateModal from "../../components/createModal/CreateModal";
+import AllActionModal from "../../components/allActionModal/AllActionModal";
 
 export default function New() {
   const {} = styles;
@@ -9,7 +9,7 @@ export default function New() {
   return (
     <>
       <div> New Task page</div>
-      <CreateModal />
+      <AllActionModal />
     </>
   );
 }
