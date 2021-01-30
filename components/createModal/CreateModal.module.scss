@@ -1,5 +1,5 @@
-@import "../../../styles/mixins";
-@import "../../../styles/variables";
+@import "../../styles/mixins";
+@import "../../styles/variables";
 
 .container {
   @include flex(column);
@@ -14,4 +14,9 @@
   @include flex(column);
   @include centered();
   width: $width;
+}
+
+.radioButtons {
+  @include flex(row);
+  margin-top: 10px;
 }

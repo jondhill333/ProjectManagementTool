@@ -1,15 +1,28 @@
-import React, { useState } from "react";
-import styles from "./CreateTaskModal.module.scss";
+import React, { useState, useEffect } from "react";
+import styles from "./CreateModal.module.scss";
 import { useRouter } from "next/router";
 
-export default function CreateTaskModal() {
-  const { container, taskForm } = styles;
+export default function CreateModal() {
+  const { container, taskForm, radioButtons } = styles;
   const [form, setForm] = useState({
     title: "",
     description: "",
     estimatedDueDate: "",
   });
+  const [type, setType] = useState("");
+
   const router = useRouter();
+  let path = router.pathname;
+
+  useEffect(() => {
+    if (path.charAt(1) === "t") {
+      setType("task");
+    } else if (path.charAt(1) === "p") {
+      setType("project");
+    } else {
+      setType("epic");
+    }
+  }, []);
 
   function handleChange(e) {
     setForm({
@@ -20,12 +33,12 @@ export default function CreateTaskModal() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    createTask();
+    create();
   }
 
-  async function createTask() {
+  async function create() {
     try {
-      const res = await fetch("http://localhost:3000/api/tasks", {
+      const res = await fetch(`http://localhost:3000/api/${type}`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -38,6 +51,7 @@ export default function CreateTaskModal() {
       console.log(error);
     }
   }
+
   return (
     <>
       <main className={container}>
