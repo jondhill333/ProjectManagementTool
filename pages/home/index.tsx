@@ -11,9 +11,7 @@ export default function LandingPage() {
   const { container } = styles;
   const router = useRouter();
 
-  function handleClick() {
-    console.log("clicked");
-  }
+  function handleClick() {}
   return (
     <>
       <div>new landing page</div>

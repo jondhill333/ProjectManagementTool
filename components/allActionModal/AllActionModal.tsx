@@ -4,8 +4,6 @@ import { useRouter } from "next/router";
 import handleDate from "../../util/handleDate";
 
 export default function AllActionModal({ task }) {
-  console.log(task);
-
   let correctlyFormattedDate = [];
   task.estimatedDueDate
     .substring(0, 10)
@@ -36,8 +34,6 @@ export default function AllActionModal({ task }) {
       : "",
     status: task ? task.status : "New",
   });
-
-  console.log(form.estimatedDueDate);
 
   const router = useRouter();
   let path = router.pathname;
