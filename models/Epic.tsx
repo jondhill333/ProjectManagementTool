@@ -31,9 +31,9 @@ export const EpicSchema: Schema = new Schema(
         "Entering a due date helps to create your visual timeline",
       ],
     },
-    tasks: {
+    projects: {
       type: Schema.Types.ObjectId,
-      ref: "Task",
+      ref: "Project",
     },
     status: {
       type: String,

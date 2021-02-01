@@ -36,6 +36,14 @@ export const TaskSchema: Schema = new Schema(
       required: [true],
       default: "New",
     },
+    epics: {
+      type: Schema.Types.ObjectId,
+      ref: "Epic",
+    },
+    projects: {
+      type: Schema.Types.ObjectId,
+      ref: "Project",
+    },
     extraInformation: {
       type: String,
     },
