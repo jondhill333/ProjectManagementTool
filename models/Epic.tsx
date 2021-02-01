@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document, model, models, Model } from "mongoose";
-import Task from "./Task";
+// import Task from "./Task";
 
 export interface IEpic extends Document {
   title: string;
@@ -31,7 +31,13 @@ export const EpicSchema: Schema = new Schema(
         "Entering a due date helps to create your visual timeline",
       ],
     },
-    tasks: [Task],
+    tasks: {
+      type: Schema.Types.ObjectId,
+      ref: "Task",
+    },
+    status: {
+      type: String,
+    },
     extraInformation: {
       type: String,
     },

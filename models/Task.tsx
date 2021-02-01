@@ -24,7 +24,7 @@ export const TaskSchema: Schema = new Schema(
       trim: true,
       maxlength: [400, "Title cannot be more than 60 Characters"],
     },
-    estimatedDueDate: {
+    endDate: {
       type: Date,
       required: [
         false,

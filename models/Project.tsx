@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document, model, models, Model } from "mongoose";
-import Epic from "./Epic";
+// import Epic from "./Epic";
 
 export interface IProject extends Document {
   title: string;
@@ -31,7 +31,17 @@ export const ProjectSchema: Schema = new Schema(
         "Entering a due date helps to create your visual timeline",
       ],
     },
-    epics: [Epic],
+    epics: {
+      type: Schema.Types.ObjectId,
+      ref: "Epic",
+    },
+    tasks: {
+      type: Schema.Types.ObjectId,
+      ref: "Task",
+    },
+    status: {
+      type: String,
+    },
     extraInformation: {
       type: String,
     },
@@ -41,5 +51,5 @@ export const ProjectSchema: Schema = new Schema(
   }
 );
 
-export default models.Epic ||
+export default models.Project ||
   mongoose.model<IProject>("Project", ProjectSchema);
