@@ -5,18 +5,21 @@ import handleDate from "../../util/handleDate";
 
 export default function AllActionModal({ task }) {
   let correctlyFormattedDate = [];
-  task.estimatedDueDate
-    .substring(0, 10)
-    .split("-")
-    .map((item) => {
-      correctlyFormattedDate.push(item + "-");
-      return correctlyFormattedDate;
-    });
+  let formattedEstimatedDueDate;
+  if (task) {
+    task.estimatedDueDate
+      .substring(0, 10)
+      .split("-")
+      .map((item) => {
+        correctlyFormattedDate.push(item + "-");
+        return correctlyFormattedDate;
+      });
 
-  let formattedEstimatedDueDate = correctlyFormattedDate
-    .join("")
-    .substring(0, 10);
-  // return formattedEstimatedDueDate;
+    formattedEstimatedDueDate = correctlyFormattedDate
+      .join("")
+      .substring(0, 10);
+    // return formattedEstimatedDueDate;
+  }
 
   const { container, taskForm, radioButtons } = styles;
 
@@ -120,7 +123,10 @@ export default function AllActionModal({ task }) {
     <>
       <main className={container}>
         <form onSubmit={handleSubmit} className={taskForm}>
-          <label htmlFor="title">Task title</label>
+          <label htmlFor="title">
+            {entryType.charAt(0).toUpperCase()}
+            {entryType.slice(1, -1)} title
+          </label>
           <input
             type="text"
             id="title"
@@ -130,7 +136,11 @@ export default function AllActionModal({ task }) {
             onChange={handleChange}
             required
           />
-          <label htmlFor="description">Task description</label>
+          <label htmlFor="description">
+            {" "}
+            {entryType.charAt(0).toUpperCase()}
+            {entryType.slice(1, -1)} description
+          </label>
           <textarea
             id="description"
             name="description"
