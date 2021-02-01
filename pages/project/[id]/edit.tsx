@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React from "react";
-import { getAllProjectIds, getProjectData } from "../../util/getAllEntries";
+import { getAllProjectIds, getProjectData } from "../../../util/getAllEntries";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
-import EditAnEntry from "../../components/editModal/editAnEntry";
+import EditAnEntry from "../../../components/editModal/EditAnEntry";
 
 export default function EditProject({ allProjectData }) {
   const project = allProjectData.data;
