@@ -1,27 +1,22 @@
 import Head from "next/head";
 import React, { useContext } from "react";
-// import { TaskContext } from "../home/index";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
-import { getAllIds } from "../../util/tasks";
-import { getTaskData } from "../../util/tasks";
-// import EditTaskModal from "../../components/taskModals/edit/EditTaskModal";
-import AllActionModal from "../../components/allActionModal/AllActionModal";
-// import styles from "./new.module.scss";
-// import { useRouter } from "next/router";
-// import TaskModal from "../components/taskModal/TaskModal";
+import { getAllTaskIds } from "../../util/getAllEntries";
+import { getTaskData } from "../../util/getAllEntries";
+import EditAnEntry from "../../components/editModal/editAnEntry";
 
 export default function EditTask({ allTaskData }) {
   const task = allTaskData.data;
   return (
     <>
       <div> Update page</div>
-      <AllActionModal task={task}></AllActionModal>
+      <EditAnEntry task={task}></EditAnEntry>
     </>
   );
 }
 
 export async function getStaticPaths() {
-  const paths = await getAllIds();
+  const paths = await getAllTaskIds();
 
   return {
     paths,

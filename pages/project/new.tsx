@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 // import styles from "./new.module.scss";
-import AllActionModal from "../../components/allActionModal/AllActionModal";
+import CreateAnEntry from "../../components/createModal/CreateAnEntry";
 
 export default function NewProjectPage() {
   //   const { container } = styles;
@@ -9,7 +9,7 @@ export default function NewProjectPage() {
   return (
     <>
       <div>new Project page</div>
-      <AllActionModal />
+      <CreateAnEntry />
     </>
   );
 }
