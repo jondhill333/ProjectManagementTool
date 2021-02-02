@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./CreateAnEntry.module.scss";
 import { useRouter } from "next/router";
+import ProjectContext from "../../util/ProjectContext";
 
 export default function CreateAnEntry() {
+  const [project, setProject] = useContext(ProjectContext);
   const { container, taskForm } = styles;
 
   const [entryType, setEntryType] = useState("");
