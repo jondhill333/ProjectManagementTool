@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import { getAllTaskIds } from "../../util/getAllEntries";
 import { getTaskData } from "../../util/getAllEntries";
-import EditAnEntry from "../../components/editModal/editAnEntry";
+import EditAnEntry from "../../components/editModal/EditAnEntry";
 
 export default function EditTask({ allTaskData }) {
   const task = allTaskData.data;
