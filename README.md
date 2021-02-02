@@ -4,7 +4,7 @@ A project management tool app to track tasks within a project
 
 ## Overview
 
-This is a student project to improve my skills with React, Next JS and Typescript as well as work with Test Driven Development. I chose this type of app as it will also improve my back-end skills and experience and offers a good set range of skills to be shown.
+This is a student project to improve my skills with React, Next JS and Typescript as well as work with Test Driven Development. I chose this type of app as it will also improve my back-end skills and experience and offers a good range of skills to be shown.
 
 A project is created and tasks are created within this project. An epic (name subject to change) can be created to group a specific set of tasks within the project.
 
@@ -19,7 +19,7 @@ Demo coming soon!
 - React v17.0.1
 - Next v10.0.1
 - SASS v1.32.5
-- mongodb v3.5.9",
+- mongodb v3.5.9
 - Mongoose v5.11.13
 <!-- - Deployed with Vercel -->
 
