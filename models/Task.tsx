@@ -6,6 +6,8 @@ export interface ITask extends Document {
   estimatedDueDate?: string;
   status: string;
   extraInformation: string;
+  project: string;
+  epic: string;
 }
 
 export const TaskSchema: Schema = new Schema(
@@ -36,11 +38,11 @@ export const TaskSchema: Schema = new Schema(
       required: [true],
       default: "New",
     },
-    epics: {
+    epic: {
       type: Schema.Types.ObjectId,
       ref: "Epic",
     },
-    projects: {
+    project: {
       type: Schema.Types.ObjectId,
       ref: "Project",
     },
