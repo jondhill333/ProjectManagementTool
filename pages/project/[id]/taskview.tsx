@@ -1,17 +1,16 @@
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import Head from "next/head";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import TaskView from "../../../components/taskView/TaskView";
 import { getAllProjectIds, getProjectData } from "../../../util/getAllEntries";
 import Link from "next/link";
 import ProjectContext from "../../../util/ProjectContext";
 
-export default function TaskViewPage({ allProjectData }) {
+export default function TaskViewPage({ project }) {
   const [currentProject, setCurrentProject] = useContext(ProjectContext);
-  // const { container, taskForm } = styles;
 
   useEffect(() => {
-    setCurrentProject(allProjectData.id);
+    setCurrentProject(project._id);
   }, []);
 
   return (
@@ -27,21 +26,23 @@ export default function TaskViewPage({ allProjectData }) {
   );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllProjectIds();
 
   return {
     paths,
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps({ params }) {
-  const allProjectData = await getProjectData(params.id);
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => {
+  const allProjectData = await getProjectData(context.params.id);
 
   return {
     props: {
-      allProjectData,
+      project: allProjectData.data,
     },
   };
-}
+};

@@ -10,6 +10,7 @@ export default function TaskView({ tasks }) {
   const [projectTasks, setProjectTasks] = useState([]);
   const { container, taskBox } = styles;
   const router = useRouter();
+  console.log(currentProject);
 
   useEffect(() => {
     // async function getAlltasks() {

@@ -4,8 +4,15 @@ import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Project from "../../models/Project";
+import Task from "../../models/Task";
 
-export default function LandingPage({ tasks, projects }) {
+interface PageProps {
+  tasks: typeof Task[];
+  projects: typeof Project[];
+}
+
+export default function LandingPage({ tasks, projects }: PageProps) {
   const { container, projectsContainer } = styles;
   const router = useRouter();
 
@@ -40,7 +47,7 @@ export default function LandingPage({ tasks, projects }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async (params) => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("http://localhost:3000/api/tasks");
   const { data } = await res.json();
 
