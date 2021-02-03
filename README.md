@@ -19,7 +19,7 @@ Demo coming soon!
 - React v17.0.1
 - Next v10.0.1
 - SASS v1.32.5
-- mongodb v3.5.9
+- Mongodb v3.5.9
 - Mongoose v5.11.13
 <!-- - Deployed with Vercel -->
 
@@ -40,4 +40,4 @@ This project is designed and developed by [JonHill](https://github.com/jondhill3
 
 ## Contributing
 
-Thanks for your interest in contributing! There are many ways to contribute to this project. Please get in contact with me if you wish to contribute.
+Thanks for your interest in contributing! There are many ways to contribute to this project - if you wish to please get in contact with me.
