@@ -4,13 +4,17 @@ import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import styles from "./TaskVIew.module.scss";
 import { useRouter } from "next/router";
 import ProjectContext from "../../util/ProjectContext";
+import Task from "../../models/Task";
 
-export default function TaskView({ tasks }) {
+interface ComponentProps {
+  tasks: typeof Task[];
+}
+
+export default function TaskView({ tasks }: ComponentProps) {
   const [currentProject, setCurrentProject] = useContext(ProjectContext);
   const [projectTasks, setProjectTasks] = useState([]);
   const { container, taskBox } = styles;
   const router = useRouter();
-  console.log(currentProject);
 
   useEffect(() => {
     // async function getAlltasks() {

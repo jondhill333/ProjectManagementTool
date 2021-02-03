@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styles from "./EditAnEntry.module.scss";
 import { useRouter } from "next/router";
+import Epic from "../../models/Epic";
+import Project from "../../models/Project";
+import Task from "../../models/Task";
 
-export default function EditAnEntry({ project, epic, task }) {
+interface ComponentProps {
+  task: typeof Task;
+  project: typeof Project;
+  epic: typeof Epic;
+}
+
+export default function EditAnEntry({ project, epic, task }: ComponentProps) {
   const { container, taskForm } = styles;
 
   let entry = project || epic || task;
