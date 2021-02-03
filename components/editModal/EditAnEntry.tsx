@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./EditAnEntry.module.scss";
 import { useRouter } from "next/router";
-import ProjectContext from "../../util/ProjectContext";
 
 export default function EditAnEntry({ project, epic, task }) {
   const { container, taskForm } = styles;
