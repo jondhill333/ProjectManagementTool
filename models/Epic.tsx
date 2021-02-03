@@ -4,7 +4,7 @@ import mongoose, { Schema, Document, model, models, Model } from "mongoose";
 export interface IEpic extends Document {
   title: string;
   description: string;
-  endDate?: string;
+  endDate: string;
   extraInformation: string;
   project: string;
 }

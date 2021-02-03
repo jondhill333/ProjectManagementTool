@@ -3,7 +3,7 @@ import mongoose, { Schema, Document, model, models, Model } from "mongoose";
 export interface ITask extends Document {
   title: string;
   description: string;
-  estimatedDueDate?: string;
+  endDate: string;
   status: string;
   extraInformation: string;
   project: string;
