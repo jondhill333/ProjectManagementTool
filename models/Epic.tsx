@@ -6,6 +6,7 @@ export interface IEpic extends Document {
   description: string;
   endDate?: string;
   extraInformation: string;
+  project: string;
 }
 
 export const EpicSchema: Schema = new Schema(
@@ -31,7 +32,7 @@ export const EpicSchema: Schema = new Schema(
         "Entering a due date helps to create your visual timeline",
       ],
     },
-    projects: {
+    project: {
       type: Schema.Types.ObjectId,
       ref: "Project",
     },

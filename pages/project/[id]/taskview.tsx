@@ -7,10 +7,11 @@ import Link from "next/link";
 import ProjectContext from "../../../util/ProjectContext";
 
 export default function TaskViewPage({ allProjectData }) {
-  const [project, setProject] = useContext(ProjectContext);
+  const [currentProject, setCurrentProject] = useContext(ProjectContext);
+  // const { container, taskForm } = styles;
 
   useEffect(() => {
-    setProject(allProjectData.id);
+    setCurrentProject(allProjectData.id);
   }, []);
 
   return (

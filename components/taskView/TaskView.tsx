@@ -19,7 +19,6 @@ export default function TaskView({ tasks }) {
   }, []);
 
   function handleClick(e) {
-    console.log(e.target.id);
     const id = e.target.id;
     router.push(`/task/${id}`);
   }

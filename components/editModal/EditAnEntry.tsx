@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./EditAnEntry.module.scss";
 import { useRouter } from "next/router";
+import ProjectContext from "../../util/ProjectContext";
 
 export default function EditAnEntry({ project, epic, task }) {
   const { container, taskForm } = styles;
@@ -44,6 +45,7 @@ export default function EditAnEntry({ project, epic, task }) {
     description: entry.description,
     endDate: formattedEndDate,
     status: entry.status,
+    project: entry.project,
   });
 
   const router = useRouter();
@@ -74,7 +76,7 @@ export default function EditAnEntry({ project, epic, task }) {
           body: JSON.stringify(form),
         }
       );
-      router.push("/home");
+      router.push(`/project/${form.project}/taskview`);
     } catch (error) {
       console.log(error);
     }

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import ProjectContext from "../../util/ProjectContext";
 
 export default function CreateAnEntry() {
-  const [project, setProject] = useContext(ProjectContext);
+  const [currentProject, setCurrentProject] = useContext(ProjectContext);
   const { container, taskForm } = styles;
 
   const [entryType, setEntryType] = useState("");
@@ -28,7 +28,7 @@ export default function CreateAnEntry() {
     description: "",
     endDate: "",
     status: "New",
-    project: project,
+    project: currentProject,
   });
 
   const router = useRouter();
@@ -56,7 +56,7 @@ export default function CreateAnEntry() {
         },
         body: JSON.stringify(form),
       });
-      router.push(`/project/${project}/taskview`);
+      router.push(`/project/${currentProject}/taskview`);
     } catch (error) {
       console.log(error);
     }
