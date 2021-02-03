@@ -28,6 +28,7 @@ export default function CreateAnEntry() {
     description: "",
     endDate: "",
     status: "New",
+    project: project,
   });
 
   const router = useRouter();
@@ -55,7 +56,7 @@ export default function CreateAnEntry() {
         },
         body: JSON.stringify(form),
       });
-      router.push("/home");
+      router.push(`/project/${project}/taskview`);
     } catch (error) {
       console.log(error);
     }
