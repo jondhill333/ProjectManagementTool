@@ -5,8 +5,13 @@ import TaskView from "../../../components/taskView/TaskView";
 import { getAllProjectIds, getProjectData } from "../../../util/getAllEntries";
 import Link from "next/link";
 import ProjectContext from "../../../util/ProjectContext";
+import Project from "../../../models/Project";
 
-export default function TaskViewPage({ project }) {
+interface PageProps {
+  project: typeof Project;
+}
+
+export default function TaskViewPage({ project }: PageProps) {
   const [currentProject, setCurrentProject] = useContext(ProjectContext);
 
   useEffect(() => {
