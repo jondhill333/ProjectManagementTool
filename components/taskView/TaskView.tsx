@@ -16,15 +16,14 @@ export default function TaskView({ tasks }: ComponentProps) {
   const { container, taskBox } = styles;
   const router = useRouter();
 
-  useEffect(() => {
-    // async function getAlltasks() {
+  useEffect((): void => {
     fetch("http://localhost:3000/api/tasks")
       .then((response) => response.json())
       .then((json) => setProjectTasks(json.data));
   }, []);
 
-  function handleClick(e) {
-    const id = e.target.id;
+  function handleClick(e): void {
+    const id: string = e.target.id;
     router.push(`/task/${id}`);
   }
 
