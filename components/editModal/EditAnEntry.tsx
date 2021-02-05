@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from "react";
 import styles from "./EditAnEntry.module.scss";
 import { useRouter } from "next/router";
+import Epic from "../../models/Epic";
+import Project from "../../models/Project";
+import Task from "../../models/Task";
 
-export default function EditAnEntry({ project, epic, task }) {
+interface ComponentProps {
+  task: typeof Task;
+  project: typeof Project;
+  epic: typeof Epic;
+}
+
+export default function EditAnEntry({ project, epic, task }: ComponentProps) {
   const { container, taskForm } = styles;
 
   let entry = project || epic || task;
 
-  let correctlyFormattedDate = [];
-  let formattedEndDate = "";
+  let correctlyFormattedDate: string[] = [];
+  let formattedEndDate: string = "";
 
   const [entryType, setEntryType] = useState("");
+
+  const router = useRouter();
+  let path: string = router.pathname;
 
   if (entry && entry.endDate) {
     entry.endDate
@@ -24,7 +36,7 @@ export default function EditAnEntry({ project, epic, task }) {
     formattedEndDate = correctlyFormattedDate.join("").substring(0, 10);
   }
 
-  function handleEntryType() {
+  function handleEntryType(): void {
     if (path.charAt(1) === "t") {
       setEntryType("tasks");
     } else if (path.charAt(1) === "p") {
@@ -34,7 +46,7 @@ export default function EditAnEntry({ project, epic, task }) {
     }
   }
 
-  useEffect(() => {
+  useEffect((): void => {
     handleEntryType();
   }, []);
 
@@ -47,17 +59,14 @@ export default function EditAnEntry({ project, epic, task }) {
     project: entry.project,
   });
 
-  const router = useRouter();
-  let path = router.pathname;
-
-  function handleChange(e) {
+  function handleChange(e): void {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e): void {
     e.preventDefault();
     edit();
   }

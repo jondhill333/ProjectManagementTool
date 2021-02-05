@@ -4,13 +4,20 @@ import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Project from "../../models/Project";
+import Task from "../../models/Task";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default function LandingPage({ tasks, projects }) {
+interface PageProps {
+  projects: typeof Project[];
+}
+
+export default function LandingPage({ projects }: PageProps) {
   const { container, projectsContainer } = styles;
   const router = useRouter();
 
   function handleClick(e) {
-    const id = e.target.id;
+    const id: string = e.target.id;
     router.push(`/project/${id}/taskview`);
   }
   return (
@@ -40,16 +47,12 @@ export default function LandingPage({ tasks, projects }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async (params) => {
-  const res = await fetch("http://localhost:3000/api/tasks");
-  const { data } = await res.json();
-
-  const resTwo = await fetch("http://localhost:3000/api/projects");
-  const projectsData = await resTwo.json();
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/projects");
+  const projectsData: NextApiResponse = await res.json();
 
   return {
     props: {
-      tasks: data,
       projects: projectsData.data,
     },
   };

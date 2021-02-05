@@ -9,7 +9,7 @@ export default function CreateAnEntry() {
 
   const [entryType, setEntryType] = useState("");
 
-  function handleEntryType() {
+  function handleEntryType(): void {
     if (path.charAt(1) === "t") {
       setEntryType("tasks");
     } else if (path.charAt(1) === "p") {
@@ -19,7 +19,7 @@ export default function CreateAnEntry() {
     }
   }
 
-  useEffect(() => {
+  useEffect((): void => {
     handleEntryType();
   }, []);
 
@@ -32,7 +32,7 @@ export default function CreateAnEntry() {
   });
 
   const router = useRouter();
-  let path = router.pathname;
+  let path: string = router.pathname;
 
   function handleChange(e) {
     setForm({
@@ -41,12 +41,12 @@ export default function CreateAnEntry() {
     });
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e): void {
     e.preventDefault();
     create();
   }
 
-  async function create() {
+  async function create(): void {
     try {
       const res = await fetch(`http://localhost:3000/api/${entryType}`, {
         method: "POST",

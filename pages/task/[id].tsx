@@ -1,12 +1,16 @@
 import Head from "next/head";
-import React, { useContext } from "react";
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
+import React from "react";
+import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from "next";
 import { getAllTaskIds } from "../../util/getAllEntries";
 import { getTaskData } from "../../util/getAllEntries";
 import EditAnEntry from "../../components/editModal/EditAnEntry";
+import Task from "../../models/Task";
 
-export default function EditTask({ allTaskData }) {
-  const task = allTaskData.data;
+interface PageProps {
+  task: typeof Task;
+}
+
+export default function EditTask({ task }: PageProps) {
   return (
     <>
       <div> Update page</div>
@@ -15,21 +19,23 @@ export default function EditTask({ allTaskData }) {
   );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllTaskIds();
 
   return {
     paths,
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps({ params }) {
-  const allTaskData = await getTaskData(params.id);
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => {
+  const allTaskData = await getTaskData(context.params.id);
 
   return {
     props: {
-      allTaskData,
+      task: allTaskData.data,
     },
   };
-}
+};
