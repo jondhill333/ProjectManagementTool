@@ -1,15 +1,14 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React from "react";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Project from "../../models/Project";
-import Task from "../../models/Task";
+import { IProject } from "../../models/Project";
 import { NextApiRequest, NextApiResponse } from "next";
 
 interface PageProps {
-  projects: typeof Project[];
+  projects: IProject[];
 }
 
 export default function LandingPage({ projects }: PageProps) {

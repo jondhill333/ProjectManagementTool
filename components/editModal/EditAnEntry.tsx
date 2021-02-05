@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "./EditAnEntry.module.scss";
 import { useRouter } from "next/router";
-import Epic from "../../models/Epic";
-import Project from "../../models/Project";
-import Task from "../../models/Task";
+import { IEpic } from "../../models/Epic";
+import { IProject } from "../../models/Project";
+import { ITask } from "../../models/Task";
 
 interface ComponentProps {
-  task: typeof Task;
-  project: typeof Project;
-  epic: typeof Epic;
+  task: ITask;
+  project: IProject;
+  epic: IEpic;
 }
 
 export default function EditAnEntry({ project, epic, task }: ComponentProps) {

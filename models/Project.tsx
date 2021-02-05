@@ -7,6 +7,8 @@ export interface IProject extends Document {
   description: string;
   endDate: string;
   extraInformation: string;
+  status: string;
+  project: string;
 }
 
 export const ProjectSchema: Schema = new Schema(

@@ -4,10 +4,10 @@ import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from "next";
 import { getAllTaskIds } from "../../util/getAllEntries";
 import { getTaskData } from "../../util/getAllEntries";
 import EditAnEntry from "../../components/editModal/EditAnEntry";
-import Task from "../../models/Task";
+import { ITask } from "../../models/Task";
 
 interface PageProps {
-  task: typeof Task;
+  task: ITask;
 }
 
 export default function EditTask({ task }: PageProps) {

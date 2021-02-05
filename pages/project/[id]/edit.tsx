@@ -3,10 +3,10 @@ import React from "react";
 import { getAllProjectIds, getProjectData } from "../../../util/getAllEntries";
 import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from "next";
 import EditAnEntry from "../../../components/editModal/EditAnEntry";
-import Project from "../../../models/Project";
+import { IProject } from "../../../models/Project";
 
 interface PageProps {
-  project: typeof Project;
+  project: IProject;
 }
 
 export default function EditProject({ project }: PageProps) {

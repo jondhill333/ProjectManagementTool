@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import styles from "./TaskVIew.module.scss";
 import { useRouter } from "next/router";
 import ProjectContext from "../../util/ProjectContext";
-import Task from "../../models/Task";
+import { ITask } from "../../models/Task";
 
 interface ComponentProps {
-  tasks: typeof Task[];
+  tasks: ITask[];
 }
 
 export default function TaskView({ tasks }: ComponentProps) {

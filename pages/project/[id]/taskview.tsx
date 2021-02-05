@@ -5,10 +5,10 @@ import TaskView from "../../../components/taskView/TaskView";
 import { getAllProjectIds, getProjectData } from "../../../util/getAllEntries";
 import Link from "next/link";
 import ProjectContext from "../../../util/ProjectContext";
-import Project from "../../../models/Project";
+import { IProject } from "../../../models/Project";
 
 interface PageProps {
-  project: typeof Project;
+  project: IProject;
 }
 
 export default function TaskViewPage({ project }: PageProps) {

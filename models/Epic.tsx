@@ -7,6 +7,7 @@ export interface IEpic extends Document {
   endDate: string;
   extraInformation: string;
   project: string;
+  status: string;
 }
 
 export const EpicSchema: Schema = new Schema(
