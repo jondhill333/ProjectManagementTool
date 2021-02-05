@@ -6,18 +6,18 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Project from "../../models/Project";
 import Task from "../../models/Task";
+import { NextApiRequest, NextApiResponse } from "next";
 
 interface PageProps {
-  tasks: typeof Task[];
   projects: typeof Project[];
 }
 
-export default function LandingPage({ tasks, projects }: PageProps) {
+export default function LandingPage({ projects }: PageProps) {
   const { container, projectsContainer } = styles;
   const router = useRouter();
 
   function handleClick(e) {
-    const id = e.target.id;
+    const id: string = e.target.id;
     router.push(`/project/${id}/taskview`);
   }
   return (
@@ -48,15 +48,11 @@ export default function LandingPage({ tasks, projects }: PageProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/api/tasks");
-  const { data } = await res.json();
-
-  const resTwo = await fetch("http://localhost:3000/api/projects");
-  const projectsData = await resTwo.json();
+  const res = await fetch("http://localhost:3000/api/projects");
+  const projectsData: NextApiResponse = await res.json();
 
   return {
     props: {
-      tasks: data,
       projects: projectsData.data,
     },
   };

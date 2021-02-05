@@ -1,3 +1,5 @@
+import { NextApiRequest, NextApiResponse } from "next";
+
 export async function getAllTaskIds() {
   const res = await fetch("http://localhost:3000/api/tasks");
   const { data } = await res.json();
@@ -11,9 +13,9 @@ export async function getAllTaskIds() {
   });
 }
 
-export async function getTaskData(id) {
+export async function getTaskData(id: string) {
   const res = await fetch(`http://localhost:3000/api/tasks/${id}`);
-  const taskData = await res.json();
+  const taskData: NextApiResponse = await res.json();
 
   return {
     id,
@@ -36,7 +38,7 @@ export async function getAllProjectIds() {
 
 export async function getProjectData(id) {
   const res = await fetch(`http://localhost:3000/api/projects/${id}`);
-  const taskData = await res.json();
+  const taskData: NextApiResponse = await res.json();
 
   return {
     id,

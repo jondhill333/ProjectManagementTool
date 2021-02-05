@@ -14,7 +14,7 @@ interface PageProps {
 export default function TaskViewPage({ project }: PageProps) {
   const [currentProject, setCurrentProject] = useContext(ProjectContext);
 
-  useEffect(() => {
+  useEffect((): void => {
     setCurrentProject(project._id);
   }, []);
 
