@@ -15,9 +15,20 @@ export default function TaskView({ tasks }: ComponentProps) {
   const router = useRouter();
 
   useEffect((): void => {
-    fetch("http://localhost:3000/api/tasks")
-      .then((response) => response.json())
-      .then((json) => setProjectTasks(json.data));
+    function fetchData() {
+      try {
+        fetch("http://localhost:3000/api/tasks")
+          .then((response) => response.json())
+          .then((json) =>
+            setProjectTasks(
+              json.data.filter((task) => task.project === currentProject)
+            )
+          );
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
   }, []);
 
   function handleClick(e): void {
@@ -34,7 +45,6 @@ export default function TaskView({ tasks }: ComponentProps) {
             <ul>
               {projectTasks &&
                 projectTasks
-                  .filter((task) => task.project === currentProject)
                   .filter((task) => task.status === "New")
                   .map((task) => (
                     <li key={task._id}>
@@ -50,7 +60,6 @@ export default function TaskView({ tasks }: ComponentProps) {
             <ul>
               {projectTasks &&
                 projectTasks
-                  .filter((task) => task.project === currentProject)
                   .filter((task) => task.status === "In Progress")
                   .map((task) => <li key={task._id}>{task.title}</li>)}
             </ul>
@@ -60,7 +69,6 @@ export default function TaskView({ tasks }: ComponentProps) {
             <ul>
               {projectTasks &&
                 projectTasks
-                  .filter((task) => task.project === currentProject)
                   .filter((task) => task.status === "Complete")
                   .map((task) => <li key={task._id}>{task.title}</li>)}
             </ul>
