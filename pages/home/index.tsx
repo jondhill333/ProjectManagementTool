@@ -1,17 +1,19 @@
 import Head from "next/head";
-import React from "react";
+import React, { useContext } from "react";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { IProject } from "../../models/Project";
 import { NextApiRequest, NextApiResponse } from "next";
+import ProjectContext from "../../util/ProjectContext";
 
 interface PageProps {
   projects: IProject[];
 }
 
 export default function LandingPage({ projects }: PageProps) {
+  const [currentProject, setCurrentProject] = useContext(ProjectContext);
   const { container, projectsContainer } = styles;
   const router = useRouter();
 

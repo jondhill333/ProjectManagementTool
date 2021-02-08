@@ -46,6 +46,9 @@ export const TaskSchema: Schema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Project",
     },
+    taskNumber: {
+      type: Number,
+    },
     extraInformation: {
       type: String,
     },

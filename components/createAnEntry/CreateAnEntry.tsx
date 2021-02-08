@@ -2,8 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import styles from "./CreateAnEntry.module.scss";
 import { useRouter } from "next/router";
 import ProjectContext from "../../util/ProjectContext";
+import { ProjectCountContext } from "../../util/ProjectCountContext";
 
 export default function CreateAnEntry() {
+  const [currentProjectCount, setCurrentProjectCount] = useContext(
+    ProjectCountContext
+  );
   const [currentProject, setCurrentProject] = useContext(ProjectContext);
   const { container, taskForm } = styles;
 
@@ -29,6 +33,7 @@ export default function CreateAnEntry() {
     endDate: "",
     status: "New",
     project: currentProject,
+    taskNumber: currentProjectCount + 1,
   });
 
   const router = useRouter();
@@ -46,7 +51,7 @@ export default function CreateAnEntry() {
     create();
   }
 
-  async function create(): void {
+  async function create() {
     try {
       const res = await fetch(`http://localhost:3000/api/${entryType}`, {
         method: "POST",

@@ -3,6 +3,8 @@ import styles from "./TaskVIew.module.scss";
 import { useRouter } from "next/router";
 import ProjectContext from "../../util/ProjectContext";
 import { ITask } from "../../models/Task";
+import Link from "next/link";
+import ProjectCountContext from "../../util/ProjectCountContext";
 
 interface ComponentProps {
   tasks: ITask[];
@@ -10,26 +12,8 @@ interface ComponentProps {
 
 export default function TaskView({ tasks }: ComponentProps) {
   const [currentProject, setCurrentProject] = useContext(ProjectContext);
-  const [projectTasks, setProjectTasks] = useState([]);
   const { container, taskBox } = styles;
   const router = useRouter();
-
-  useEffect((): void => {
-    function fetchData() {
-      try {
-        fetch("http://localhost:3000/api/tasks")
-          .then((response) => response.json())
-          .then((json) =>
-            setProjectTasks(
-              json.data.filter((task) => task.project === currentProject)
-            )
-          );
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
-  }, []);
 
   function handleClick(e): void {
     const id: string = e.target.id;
@@ -39,12 +23,18 @@ export default function TaskView({ tasks }: ComponentProps) {
   return (
     <>
       <main>
+        {currentProject}
+        <br></br>
+        <Link href="/home">
+          <a>Home</a>
+        </Link>
         <div className={container}>
           <section className={`${taskBox}`}>
             New
             <ul>
-              {projectTasks &&
-                projectTasks
+              {tasks &&
+                tasks
+                  .filter((task) => task.project === currentProject)
                   .filter((task) => task.status === "New")
                   .map((task) => (
                     <li key={task._id}>
@@ -58,8 +48,9 @@ export default function TaskView({ tasks }: ComponentProps) {
           <section className={`${taskBox}`}>
             In Progress
             <ul>
-              {projectTasks &&
-                projectTasks
+              {tasks &&
+                tasks
+                  .filter((task) => task.project === currentProject)
                   .filter((task) => task.status === "In Progress")
                   .map((task) => <li key={task._id}>{task.title}</li>)}
             </ul>
@@ -67,8 +58,9 @@ export default function TaskView({ tasks }: ComponentProps) {
           <section className={`${taskBox}`}>
             Completed
             <ul>
-              {projectTasks &&
-                projectTasks
+              {tasks &&
+                tasks
+                  .filter((task) => task.project === currentProject)
                   .filter((task) => task.status === "Complete")
                   .map((task) => <li key={task._id}>{task.title}</li>)}
             </ul>
