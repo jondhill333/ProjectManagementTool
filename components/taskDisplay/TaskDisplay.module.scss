@@ -1,0 +1,11 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.container {
+  //   @include flex(column);
+  border: solid red 1px;
+  width: 100px;
+  //   TODO -move height into variable if suitable
+  height: 50px;
+  //   margin: $centeredBMargin;
+}

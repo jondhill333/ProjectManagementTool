@@ -5,6 +5,7 @@ import ProjectContext from "../../util/ProjectContext";
 import { ITask } from "../../models/Task";
 import Link from "next/link";
 import ProjectCountContext from "../../util/ProjectCountContext";
+import TaskDisplay from "../taskDisplay/TaskDisplay";
 
 interface ComponentProps {
   tasks: ITask[];
@@ -23,6 +24,7 @@ export default function TaskView({ tasks }: ComponentProps) {
   return (
     <>
       <main>
+        <TaskDisplay />
         {currentProject}
         <br></br>
         <Link href="/home">
