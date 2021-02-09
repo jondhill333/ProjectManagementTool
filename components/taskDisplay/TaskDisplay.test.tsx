@@ -7,28 +7,32 @@ Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 const setup = () => shallow(<TaskDisplay />);
 
+export const findByTestAttribute = (wrapper, val) => {
+  return wrapper.find(`[data-test='${val}']`);
+};
+
 describe("component appearance is correct", () => {
   test("should render without throwing an eror", () => {
     const wrapper = setup();
-    const container = wrapper.find("[data-test='container']");
+    const container = findByTestAttribute(wrapper, "container");
     expect(container.length).toBe(1);
   });
 
   test("should render the div for the project title", () => {
     const wrapper = setup();
-    const projectTitle = wrapper.find("[data-test='projectTitle']");
+    const projectTitle = findByTestAttribute(wrapper, "projectTitle");
     expect(projectTitle.length).toBe(1);
   });
 
   test("should render the span for the project task number", () => {
     const wrapper = setup();
-    const projectTaskNumber = wrapper.find("[data-test='projectTaskNumber']");
+    const projectTaskNumber = findByTestAttribute(wrapper, "projectTaskNumber");
     expect(projectTaskNumber.length).toBe(1);
   });
 
   test("should render the div for the task title", () => {
     const wrapper = setup();
-    const taskTitle = wrapper.find("[data-test='taskTitle']");
+    const taskTitle = findByTestAttribute(wrapper, "taskTitle");
     expect(taskTitle.length).toBe(1);
   });
 });
