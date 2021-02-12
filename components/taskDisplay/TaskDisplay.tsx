@@ -23,9 +23,16 @@ export default function TaskDisplay({ task, currentProject }: DisplayProps) {
         <div data-test="projectTitle" className={projectTitle}>
           {currentProject}
         </div>
-        <span data-test="projectTaskNumber" className={projectTaskNumber}>
-          &#35;{task.taskNumber}
-        </span>
+        {task.taskNumber ? (
+          <span data-test="projectTaskNumber" className={projectTaskNumber}>
+            {" "}
+            &#35;
+            {task.taskNumber}{" "}
+          </span>
+        ) : (
+          <span></span>
+        )}
+
         <div data-test="taskTitle" className={taskTitle}>
           {task.title}
         </div>

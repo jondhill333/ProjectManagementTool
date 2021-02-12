@@ -4,26 +4,28 @@
 .container {
   @include grid(0);
   border: solid red 1px;
-  grid-template-columns: 80% 20%;
-  grid-template-rows: 40% 60%;
-  width: 100%;
+  grid-template-columns: 90% 10%;
+  // grid-template-rows: 40% auto;
+  width: 95%;
   //   TODO -move height into variable if suitable
-  height: 80px;
+  height: auto;
   //   margin: $centeredBMargin;
-  margin: 10px 0;
+  margin: 10px auto;
 }
 
 .projectTitle {
-  border: solid green 1px;
+  @include flex(row);
   width: 100%;
+  align-items: center;
+  padding: $taskDisplayTextPadding;
 }
 .projectTaskNumber {
-  border: solid pink 1px;
   letter-spacing: 1px;
+  padding: $taskDisplayTextPadding;
 }
 
 .taskTitle {
-  border: solid blue 1px;
   font-weight: 900;
   grid-column: 1 / -1;
+  padding: $taskDisplayTextPadding;
 }
