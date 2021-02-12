@@ -12,7 +12,7 @@ interface ComponentProps {
 }
 
 export default function EditAnEntry({ project, epic, task }: ComponentProps) {
-  const { container, taskForm } = styles;
+  const { container, taskForm, radioButtons } = styles;
 
   let entry = project || epic || task;
 
@@ -131,6 +131,32 @@ export default function EditAnEntry({ project, epic, task }: ComponentProps) {
             onChange={handleChange}
             value={form.endDate}
           />
+          <div className={radioButtons}>
+            <input
+              type="radio"
+              id="new"
+              name="status"
+              value="New"
+              onChange={handleChange}
+            />
+            <label htmlFor="new">New</label>
+            <input
+              type="radio"
+              id="In Progress"
+              name="status"
+              value="In Progress"
+              onChange={handleChange}
+            />
+            <label htmlFor="in-progress">In Progress</label>
+            <input
+              type="radio"
+              id="complete"
+              name="status"
+              value="Complete"
+              onChange={handleChange}
+            />
+            <label htmlFor="complete">Complete</label>
+          </div>
           <input type="submit" value="Submit"></input>
         </form>
       </main>
