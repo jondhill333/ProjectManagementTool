@@ -2,10 +2,28 @@
 @import "../../styles/variables";
 
 .container {
-  //   @include flex(column);
+  @include grid(0);
   border: solid red 1px;
-  width: 100px;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 40% 60%;
+  width: 100%;
   //   TODO -move height into variable if suitable
-  height: 50px;
+  height: 80px;
   //   margin: $centeredBMargin;
+  margin: 10px 0;
+}
+
+.projectTitle {
+  border: solid green 1px;
+  width: 100%;
+}
+.projectTaskNumber {
+  border: solid pink 1px;
+  letter-spacing: 1px;
+}
+
+.taskTitle {
+  border: solid blue 1px;
+  font-weight: 900;
+  grid-column: 1 / -1;
 }

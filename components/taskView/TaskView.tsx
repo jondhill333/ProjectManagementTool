@@ -14,18 +14,11 @@ interface ComponentProps {
 export default function TaskView({ tasks }: ComponentProps) {
   const [currentProject, setCurrentProject] = useContext(ProjectContext);
   const { container, taskBox } = styles;
-  const router = useRouter();
-
-  function handleClick(e): void {
-    const id: string = e.target.id;
-    router.push(`/task/${id}`);
-  }
 
   return (
     <>
       <main>
-        <TaskDisplay />
-        {currentProject}
+        {currentProject.title}
         <br></br>
         <Link href="/home">
           <a>Home</a>
@@ -33,39 +26,52 @@ export default function TaskView({ tasks }: ComponentProps) {
         <div className={container}>
           <section className={`${taskBox}`}>
             New
-            <ul>
-              {tasks &&
-                tasks
-                  .filter((task) => task.project === currentProject)
-                  .filter((task) => task.status === "New")
-                  .map((task) => (
-                    <li key={task._id}>
-                      <button onClick={handleClick} id={task._id}>
-                        {task.title}
-                      </button>
-                    </li>
-                  ))}
-            </ul>
+            {/* <ul> */}
+            {tasks &&
+              tasks
+                .filter((task) => task.project === currentProject.id)
+                .filter((task) => task.status === "New")
+                .map((task) => (
+                  <TaskDisplay
+                    key={task._id}
+                    currentProject={currentProject.title}
+                    task={task}
+                    id={task._id}
+                  />
+                ))}
+            {/* </ul> */}
           </section>
           <section className={`${taskBox}`}>
             In Progress
-            <ul>
-              {tasks &&
-                tasks
-                  .filter((task) => task.project === currentProject)
-                  .filter((task) => task.status === "In Progress")
-                  .map((task) => <li key={task._id}>{task.title}</li>)}
-            </ul>
+            {/* <ul> */}
+            {tasks &&
+              tasks
+                .filter((task) => task.project === currentProject)
+                .filter((task) => task.status === "In Progress")
+                .map((task) => (
+                  <TaskDisplay
+                    key={task._id}
+                    currentProject={currentProject.title}
+                    task={task}
+                  />
+                ))}
+            {/* </ul> */}
           </section>
           <section className={`${taskBox}`}>
             Completed
-            <ul>
-              {tasks &&
-                tasks
-                  .filter((task) => task.project === currentProject)
-                  .filter((task) => task.status === "Complete")
-                  .map((task) => <li key={task._id}>{task.title}</li>)}
-            </ul>
+            {/* <ul> */}
+            {tasks &&
+              tasks
+                .filter((task) => task.project === currentProject)
+                .filter((task) => task.status === "Complete")
+                .map((task) => (
+                  <TaskDisplay
+                    key={task._id}
+                    currentProject={currentProject.title}
+                    task={task}
+                  />
+                ))}
+            {/* </ul> */}
           </section>
         </div>
       </main>
