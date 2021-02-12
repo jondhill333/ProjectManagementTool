@@ -3,7 +3,7 @@ import React from "react";
 import { shallow, mount, render } from "enzyme";
 
 describe("NewTask component", () => {
-  it("renders correctly", () => {
+  it.only("renders correctly", () => {
     const wrapper = mount(<NewTask />);
 
     expect(wrapper).toMatchSnapshot();
@@ -15,7 +15,7 @@ describe("NewTask component", () => {
     expect(wrapper.find("input").props().value).toEqual("test");
   });
 
-  it.only("should call onSubmit prop for valid form submission", () => {
+  it("should call onSubmit prop for valid form submission", () => {
     const testObject = {
       title: "test desc",
       description: "test description",

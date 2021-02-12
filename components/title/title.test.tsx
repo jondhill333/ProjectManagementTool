@@ -3,7 +3,7 @@ import React from "react";
 import { shallow, mount, render } from "enzyme";
 
 describe("A suite", function () {
-  it("should render without throwing an error", function () {
+  it.only("should render without throwing an error", function () {
     expect(
       shallow(<Title />).contains(<div className="testDiv">testDiv</div>)
     ).toBe(true);

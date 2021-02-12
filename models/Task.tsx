@@ -8,6 +8,7 @@ export interface ITask extends Document {
   extraInformation: string;
   project: string;
   epic: string;
+  taskNumber: number;
 }
 
 export const TaskSchema: Schema = new Schema(
