@@ -20,7 +20,7 @@ export default function TaskViewPage({ project }: PageProps) {
   const [tasks, setTasks] = useState([]);
 
   useEffect((): void => {
-    setCurrentProject(project._id);
+    setCurrentProject({ id: project._id, title: project.title });
     function fetchData() {
       try {
         fetch("http://localhost:3000/api/tasks")
