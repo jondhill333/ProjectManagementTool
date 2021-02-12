@@ -36,6 +36,9 @@ export default function EditAnEntry({ project, epic, task }: ComponentProps) {
     formattedEndDate = correctlyFormattedDate.join("").substring(0, 10);
   }
 
+  // TODO check if this implementation can be improved once
+  // editing a project and editing an epic behaviour has been decided on
+
   function handleEntryType(): void {
     if (path.charAt(1) === "t") {
       setEntryType("tasks");
@@ -60,6 +63,7 @@ export default function EditAnEntry({ project, epic, task }: ComponentProps) {
   });
 
   function handleChange(e): void {
+    console.log(e);
     setForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -138,6 +142,7 @@ export default function EditAnEntry({ project, epic, task }: ComponentProps) {
               name="status"
               value="New"
               onChange={handleChange}
+              checked={`${form.status === "New" ? "checked" : ""}`}
             />
             <label htmlFor="new">New</label>
             <input
@@ -146,6 +151,7 @@ export default function EditAnEntry({ project, epic, task }: ComponentProps) {
               name="status"
               value="In Progress"
               onChange={handleChange}
+              checked={`${form.status === "In Progress" ? "checked" : ""}`}
             />
             <label htmlFor="in-progress">In Progress</label>
             <input
@@ -154,6 +160,7 @@ export default function EditAnEntry({ project, epic, task }: ComponentProps) {
               name="status"
               value="Complete"
               onChange={handleChange}
+              checked={`${form.status === "Complete" ? "checked" : ""}`}
             />
             <label htmlFor="complete">Complete</label>
           </div>
