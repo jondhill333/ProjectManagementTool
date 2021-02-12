@@ -18,14 +18,14 @@ export const TaskSchema: Schema = new Schema(
       required: [true, "Please add a title"],
       unique: true,
       trim: true,
-      maxlength: [60, "Title cannot be more than 60 Characters "],
+      maxlength: [100, "Title cannot be more than 60 Characters "],
     },
     description: {
       type: String,
       required: [true, "Please add a title"],
       unique: true,
       trim: true,
-      maxlength: [400, "Title cannot be more than 60 Characters"],
+      maxlength: [800, "Title cannot be more than 60 Characters"],
     },
     endDate: {
       type: Date,
