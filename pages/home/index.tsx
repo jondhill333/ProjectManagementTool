@@ -24,6 +24,9 @@ export default function UserProjectsPage({ projects }: PageProps) {
   return (
     <>
       <div>new landing page</div>
+      <button>
+        <a href="/api/logout">Logout</a>
+      </button>
       <div className={container}>
         <button onClick={handleClick}>
           <Link href="/project/new">
