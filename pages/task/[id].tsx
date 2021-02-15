@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React from "react";
 import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from "next";
-import { getAllTaskIds } from "../../util/getAllEntries";
-import { getTaskData } from "../../util/getAllEntries";
+import { getAllTaskIds } from "../../utils/getAllEntries";
+import { getTaskData } from "../../utils/getAllEntries";
 import EditAnEntry from "../../components/editModal/EditAnEntry";
 import { ITask } from "../../models/Task";
 

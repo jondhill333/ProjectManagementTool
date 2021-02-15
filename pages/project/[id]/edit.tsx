@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import { getAllProjectIds, getProjectData } from "../../../util/getAllEntries";
+import { getAllProjectIds, getProjectData } from "../../../utils/getAllEntries";
 import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from "next";
 import EditAnEntry from "../../../components/editModal/EditAnEntry";
 import { IProject } from "../../../models/Project";

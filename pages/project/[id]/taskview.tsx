@@ -2,11 +2,11 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import Head from "next/head";
 import React, { useContext, useEffect, useState } from "react";
 import TaskView from "../../../components/taskView/TaskView";
-import { getAllProjectIds, getProjectData } from "../../../util/getAllEntries";
+import { getAllProjectIds, getProjectData } from "../../../utils/getAllEntries";
 import Link from "next/link";
-import ProjectContext from "../../../util/ProjectContext";
+import ProjectContext from "../../../utils/ProjectContext";
 import { IProject } from "../../../models/Project";
-import ProjectCountContext from "../../../util/ProjectCountContext";
+import ProjectCountContext from "../../../utils/ProjectCountContext";
 
 interface PageProps {
   project: IProject;
