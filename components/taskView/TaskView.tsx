@@ -14,6 +14,17 @@ interface ComponentProps {
 export default function TaskView({ tasks }: ComponentProps) {
   const [currentProject, setCurrentProject] = useContext(ProjectContext);
   const { container, taskBox } = styles;
+  console.log(currentProject);
+
+  const [currentProjectCount, setCurrentProjectCount] = useContext(
+    ProjectCountContext
+  );
+
+  useEffect((): void => {
+    setCurrentProjectCount(
+      tasks.filter((task) => task.project === currentProject.id).length
+    );
+  });
 
   const newTaks = tasks
     .filter((task) => task.project === currentProject.id)
@@ -42,7 +53,7 @@ export default function TaskView({ tasks }: ComponentProps) {
               newTaks.map((task) => (
                 <TaskDisplay
                   key={task._id}
-                  currentProject={currentProject.title}
+                  currentProjectTitle={currentProject.title}
                   task={task}
                 />
               ))}
@@ -53,7 +64,7 @@ export default function TaskView({ tasks }: ComponentProps) {
               inProgressTasks.map((task) => (
                 <TaskDisplay
                   key={task._id}
-                  currentProject={currentProject.title}
+                  currentProjectTitle={currentProject.title}
                   task={task}
                 />
               ))}
@@ -65,7 +76,7 @@ export default function TaskView({ tasks }: ComponentProps) {
               completedTasks.map((task) => (
                 <TaskDisplay
                   key={task._id}
-                  currentProject={currentProject.title}
+                  currentProjectTitle={currentProject.title}
                   task={task}
                 />
               ))}

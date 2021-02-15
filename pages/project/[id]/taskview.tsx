@@ -14,9 +14,7 @@ interface PageProps {
 
 export default function TaskViewPage({ project }: PageProps) {
   const [currentProject, setCurrentProject] = useContext(ProjectContext);
-  const [currentProjectCount, setCurrentProjectCount] = useContext(
-    ProjectCountContext
-  );
+
   const [tasks, setTasks] = useState([]);
 
   useEffect((): void => {
@@ -33,16 +31,10 @@ export default function TaskViewPage({ project }: PageProps) {
     fetchData();
   }, []);
 
-  function updateProjectCount() {
-    setCurrentProjectCount(
-      tasks.filter((task) => task.project === currentProject).length
-    );
-  }
-
   return (
     <>
       <div> this is my TaskView page in a dynamic route</div>
-      <button onClick={updateProjectCount}>
+      <button>
         <Link href="/task/new">
           <a>Create new Task</a>
         </Link>
