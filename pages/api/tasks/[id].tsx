@@ -1,4 +1,4 @@
-import dbConnect from "../../../util/dbconnect";
+import dbConnect from "../../../utils/dbconnect";
 import Task from "../../../models/Task";
 import { NextApiRequest, NextApiResponse } from "next";
 
