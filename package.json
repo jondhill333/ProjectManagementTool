@@ -16,6 +16,7 @@
     }
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^0.16.1",
     "mongodb": "^3.5.9",
     "mongoose": "^5.11.13",
     "next": "latest",
