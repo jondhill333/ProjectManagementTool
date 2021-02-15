@@ -5,10 +5,13 @@ import styles from "./TaskDisplay.module.scss";
 
 export interface DisplayProps {
   task: ITask;
-  currentProject: { id: string; title: string };
+  currentProjectTitle: string;
 }
 
-export default function TaskDisplay({ task, currentProject }: DisplayProps) {
+export default function TaskDisplay({
+  task,
+  currentProjectTitle,
+}: DisplayProps) {
   const { container, projectTitle, projectTaskNumber, taskTitle } = styles;
 
   const router = useRouter();
@@ -21,7 +24,7 @@ export default function TaskDisplay({ task, currentProject }: DisplayProps) {
     <>
       <div data-test="container" className={container} onClick={handleClick}>
         <div data-test="projectTitle" className={projectTitle}>
-          {currentProject}
+          {currentProjectTitle}
         </div>
         {task.taskNumber ? (
           <span data-test="projectTaskNumber" className={projectTaskNumber}>

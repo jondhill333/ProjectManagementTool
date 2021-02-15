@@ -32,7 +32,7 @@ export default function CreateAnEntry() {
     description: "",
     endDate: "",
     status: "New",
-    project: currentProject,
+    project: currentProject.id,
     taskNumber: currentProjectCount + 1,
   });
 
@@ -61,7 +61,7 @@ export default function CreateAnEntry() {
         },
         body: JSON.stringify(form),
       });
-      router.push(`/project/${currentProject}/taskview`);
+      router.push(`/project/${currentProject.id}/taskview`);
     } catch (error) {
       console.log(error);
     }
