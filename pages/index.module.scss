@@ -1,0 +1,9 @@
+@import "../styles/mixins";
+@import "../styles/variables";
+
+.container {
+  @include flex(column);
+  button {
+    width: 100px;
+  }
+}

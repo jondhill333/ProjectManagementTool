@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./TaskVIew.module.scss";
 import { useRouter } from "next/router";
-import ProjectContext from "../../util/ProjectContext";
+import ProjectContext from "../../utils/ProjectContext";
 import { ITask } from "../../models/Task";
 import Link from "next/link";
-import ProjectCountContext from "../../util/ProjectCountContext";
+import ProjectCountContext from "../../utils/ProjectCountContext";
 import TaskDisplay from "../taskDisplay/TaskDisplay";
 
 interface ComponentProps {

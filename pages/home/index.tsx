@@ -6,15 +6,15 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { IProject } from "../../models/Project";
 import { NextApiRequest, NextApiResponse } from "next";
-import ProjectContext from "../../util/ProjectContext";
+import ProjectContext from "../../utils/ProjectContext";
 
 interface PageProps {
   projects: IProject[];
 }
 
-export default function LandingPage({ projects }: PageProps) {
+export default function UserProjectsPage({ projects }: PageProps) {
   const [currentProject, setCurrentProject] = useContext(ProjectContext);
-  const { container, projectsContainer } = styles;
+  const { container, projectsContainer, project } = styles;
   const router = useRouter();
 
   function handleClick(e) {
@@ -24,6 +24,9 @@ export default function LandingPage({ projects }: PageProps) {
   return (
     <>
       <div>new landing page</div>
+      <button>
+        <a href="/api/logout">Logout</a>
+      </button>
       <div className={container}>
         <button onClick={handleClick}>
           <Link href="/project/new">

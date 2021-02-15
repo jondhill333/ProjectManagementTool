@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./CreateAnEntry.module.scss";
 import { useRouter } from "next/router";
-import ProjectContext from "../../util/ProjectContext";
-import { ProjectCountContext } from "../../util/ProjectCountContext";
+import ProjectContext from "../../utils/ProjectContext";
+import { ProjectCountContext } from "../../utils/ProjectCountContext";
 
 export default function CreateAnEntry() {
   const [currentProjectCount, setCurrentProjectCount] = useContext(
