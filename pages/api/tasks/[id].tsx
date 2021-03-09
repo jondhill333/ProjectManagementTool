@@ -40,9 +40,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       break;
     case "DELETE":
       try {
-        const deletedNote = await Task.deleteOne({ _id: id });
-        if (!deletedNote) {
-          return res.status(400).json({ success: false + "no note" });
+        const deletedTask = await Task.deleteOne({ _id: id });
+        if (!deletedTask) {
+          return res.status(400).json({ success: false + "no task" });
         }
         res.status(200).json({ success: true, data: {} });
       } catch (error) {
