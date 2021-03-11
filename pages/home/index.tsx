@@ -23,6 +23,7 @@ export default function UserProjectsPage({ projects }: PageProps) {
   }
   return (
     <>
+      <div></div>
       <div>new landing page</div>
       <button>
         <a href="/api/logout">Logout</a>
